@@ -5,7 +5,7 @@ abstract class AbstractFileSystemNode(name: String) : FileSystemNode {
     override lateinit var name: String
 
     override val path: String
-        get() = if (parent != null) parent!!.path + "/" + name else name
+        get() = (parent?.path ?: "") + "/" + name
 
     init {
         name.also { this.name = it }

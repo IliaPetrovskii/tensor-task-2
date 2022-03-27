@@ -4,15 +4,7 @@ enum class Suit {
     CLUBS, DIAMONDS, SPADES, HEARTS
 }
 
-class Card(private val rank: Int, private val suit: Suit) {
-
-    fun getRank(): Int {
-        return rank
-    }
-
-    fun getSuit(): Suit {
-        return suit
-    }
+class Card(val rank: Int, val suit: Suit) {
 
     fun checkStandardDeck(): Boolean {
         return if (rank in 2..14) true else rank == 15 && (suit === Suit.CLUBS || suit === Suit.HEARTS)
@@ -23,7 +15,7 @@ class Card(private val rank: Int, private val suit: Suit) {
     }
 
     override fun toString(): String {
-        val str: String = when (rank) {
+        val str = when (rank) {
             11 -> "Jack"
             12 -> "Queen"
             13 -> "King"
@@ -31,7 +23,7 @@ class Card(private val rank: Int, private val suit: Suit) {
             15 -> if (suit === Suit.CLUBS) return "Black Joker" else if (suit === Suit.HEARTS) return "Colored Joker" else rank.toString()
             else -> rank.toString()
         }
-        return str + " of " + suit.name
+        return "$str of ${suit.name}"
     }
 
     override fun equals(other: Any?): Boolean {

@@ -1,6 +1,6 @@
 package n3
 
-class Folder(name: String?, vararg abstractFileSystemNodes: AbstractFileSystemNode) : AbstractFileSystemNode(name!!) {
+class Folder(name: String, vararg abstractFileSystemNodes: AbstractFileSystemNode) : AbstractFileSystemNode(name) {
     private val childNodes = ArrayList<AbstractFileSystemNode>()
 
     init {
