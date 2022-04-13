@@ -4,9 +4,6 @@ class File(name: String, extension: String) : AbstractFileSystemNode(name) {
     var extension: String = extension
         private set
 
-    override var name: String
+    override val name: String
         get() = super.name + "." + extension
-        set(name) {
-            super.name = name
-        }
 }

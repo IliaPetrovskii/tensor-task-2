@@ -4,7 +4,7 @@ enum class Suit {
     CLUBS, DIAMONDS, SPADES, HEARTS
 }
 
-class Card(val rank: Int, val suit: Suit) {
+data class Card(val rank: Int, val suit: Suit) : Comparable<Card> {
 
     fun checkStandardDeck(): Boolean {
         return if (rank in 2..14) true else rank == 15 && (suit === Suit.CLUBS || suit === Suit.HEARTS)
@@ -26,18 +26,7 @@ class Card(val rank: Int, val suit: Suit) {
         return "$str of ${suit.name}"
     }
 
-    override fun equals(other: Any?): Boolean {
-        if (other == null) return false
-        if (this === other) return true
-        if (other !is Card) return false
-        return (rank == other.rank) && (suit == other.suit)
-    }
-
-    override fun hashCode(): Int {
-        return rank * 31 + suit.hashCode()
-    }
-
-    operator fun compareTo(other: Card): Int {
+    override fun compareTo(other: Card): Int {
         return if (suit !== other.suit) suit.ordinal - other.suit.ordinal else rank - other.rank
     }
 
